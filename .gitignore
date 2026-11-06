@@ -1,0 +1,73 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+pip-wheel-metadata/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Environment / secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- Testing / tooling caches ---
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Logs & runtime output ---
+*.log
+logs/
+outputs/
+results/
+runs/
+tmp/
+
+# --- Local test media (images/videos used for trying detection) ---
+data/
+samples/
+*.mp4
+*.avi
+*.mkv
+
+# --- Model weights ---
+# models/rtdetrv2_r18.onnx is committed so the app works out of the box.
+# Uncomment to stop tracking model files (e.g. if you move them to Git LFS
+# or download them at setup time).
+# models/
+# *.onnx
+*.pt
+*.pth
+*.ckpt
+
+# --- Editors / IDEs ---
+.vscode/
+!.vscode/settings.json
+!.vscode/launch.json
+.idea/
+*.swp
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+desktop.ini

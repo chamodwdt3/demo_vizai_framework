@@ -10,7 +10,7 @@ pipelines:
       plugin: "myapp.fire_smoke"
       params:
         model_version: "yolo26s-e2e"
-        model_path: "models/fire_smoke.onnx"
+        model_path: "models/best_e2e.onnx"
         confidence_threshold: 0.4
         allowed_labels: ["fire", "smoke"]
 

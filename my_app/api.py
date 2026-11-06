@@ -5,9 +5,13 @@ Run:  uvicorn my_app.api:app --reload --port 8000
 Docs: http://127.0.0.1:8000/docs
 """
 
-# Must run before any framework or Ultralytics imports: loads the CUDA/cuDNN DLLs on Windows.
+# Import torch first so it loads its own cuDNN (CUDA 12). If onnxruntime's preload runs first,
+# its CUDA 13 cuDNN DLLs (same file names) get picked up by torch and fail with WinError 127.
+import torch  # noqa: F401
+
+# Then load onnxruntime's CUDA/cuDNN DLLs on Windows, before any framework or Ultralytics imports.
 # Without it, inference falls back to the CPU without any error.
-import onnxruntime as ort
+import onnxruntime as ort  # noqa: E402
 
 ort.preload_dlls()
 

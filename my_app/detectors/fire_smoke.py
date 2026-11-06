@@ -59,7 +59,7 @@ class FireSmokeInferStage(Stage[Any, list[Detection]]):
 
     def __init__(self, params: dict[str, Any]) -> None:
         self._model_path = _resolve_model_path(
-            str(params.get("model_path", "models/rtdetrv2_r18.onnx")))
+            str(params.get("model_path", "models/best_e2e.onnx")))
         self._default_conf = float(params.get("confidence_threshold", 0.25))
 
     @property

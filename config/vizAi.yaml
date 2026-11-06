@@ -1,0 +1,27 @@
+execution:
+  mode: "sync"
+
+plugins:
+  enabled: ["myapp.fire_smoke"]
+
+pipelines:
+  definitions:
+    - id: "fire_smoke_v1"
+      plugin: "myapp.fire_smoke"
+      params:
+        model_version: "yolo26s-e2e"
+        model_path: "models/fire_smoke.onnx"
+        confidence_threshold: 0.4
+        allowed_labels: ["fire", "smoke"]
+
+routing:
+  rules:
+    - match: { context_id: "site_a", modality: "image", source_type: "file" }
+      pipeline_id: "fire_smoke_v1"
+
+sync:
+  request:
+    timeout_ms: 15000      # the first request also loads the model
+    max_concurrency: 8
+  output:
+    mode: "return"
